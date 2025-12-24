@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/themes/theme-provider";
+import { Navbar } from "@/components/navigation/Navbar";
+import AnimatedBackground from "@/components/animation/AnimatedBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AnimatedBackground />
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1 w-full">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
