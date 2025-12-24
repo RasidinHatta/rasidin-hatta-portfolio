@@ -21,7 +21,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="shrink-0">
-            <Link href="/" className="text-xl font-bold text-foreground">
+            <Link href="/" className="cursor-target text-xl font-bold text-foreground">
               Rasidin
             </Link>
           </div>
@@ -35,7 +35,7 @@ export const Navbar = () => {
                   <NavigationMenuLink asChild>
                     <Link
                       href={item.href}
-                      className="font-medium text-sm text-foreground relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full hover:text-primary"
+                      className="cursor-target font-medium text-sm text-foreground relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full hover:text-primary"
                     >
                       {item.label}
                     </Link>

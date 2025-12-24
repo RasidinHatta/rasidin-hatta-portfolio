@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/themes/theme-provider";
 import { Navbar } from "@/components/navigation/Navbar";
 import AnimatedBackground from "@/components/animation/AnimatedBackground";
+import TargetCursor from "@/components/react-bits/TargetCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AnimatedBackground />
+          <TargetCursor />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1 w-full">{children}</main>
