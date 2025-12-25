@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -13,7 +12,6 @@ import { ThemeToggle } from "../themes/theme-toggle";
 
 // Navbar Component
 export const Navbar = () => {
-  const router = useRouter();
 
   return (
     <nav className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500">
@@ -27,7 +25,7 @@ export const Navbar = () => {
           </div>
 
           {/* Navigation Items */}
-          <NavigationMenu className="border border-white/10 bg-white/5 backdrop-blur-lg rounded-full px-6 py-2 dark:border-white/5 dark:bg-black/5 supports-backdrop-filter:bg-white/5">
+          <NavigationMenu className="border border-white/20 bg-white/10 backdrop-blur-lg rounded-full px-6 py-2 dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10">
             <NavigationMenuList className="flex items-center space-x-6">
               {/* Map regular nav items */}
               {navItems.map((item) => (
