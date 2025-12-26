@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { ElementType, ReactNode } from "react"
-import { motion } from "motion/react"
+import { ElementType, ReactNode, useMemo } from "react";
+import { motion } from "motion/react";
 
 interface AnimatedTextProps {
-  as?: ElementType
-  children: ReactNode
-  className?: string
-  delay?: number
+  as?: ElementType;
+  children: ReactNode;
+  className?: string;
+  delay?: number;
 }
 
 export function AnimatedText({
@@ -17,8 +17,8 @@ export function AnimatedText({
   delay = 0,
 }: AnimatedTextProps) {
   // Use motion.create() instead of motion()
-  const MotionTag = motion.create(Tag)
-  
+  const MotionTag = useMemo(() => motion.create(Tag), [Tag]);
+
   return (
     <MotionTag
       initial={{ opacity: 0, filter: "blur(12px)", y: 12 }}
@@ -28,5 +28,5 @@ export function AnimatedText({
     >
       {children}
     </MotionTag>
-  )
+  );
 }

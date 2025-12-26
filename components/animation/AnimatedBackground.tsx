@@ -19,7 +19,7 @@ export default function AnimatedBackground() {
   }
 
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="fixed inset-0 z-0">
       <AnimatePresence mode="wait">
         {resolvedTheme === "dark" ? (
           <motion.div
