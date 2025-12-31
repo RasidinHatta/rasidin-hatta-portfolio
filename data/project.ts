@@ -1,0 +1,68 @@
+import { Project } from "@/types/projects";
+
+// Projects from your resume
+export const projects: Project[] = [
+    {
+        id: 1,
+        title: "Study Archive Management System",
+        description: "Document Management System using Waterfall methodology, featuring Authentication, RBAC, Content Preference, and Collaboration",
+        longDescription: "Developed as a Final Year Project, this document management system enhances student study experience by providing secure document sharing features. The system implements comprehensive security measures including HTTPS, Two Factor Authentication (2FA), JSON Web Tokens (JWT), Role Based Access Control (RBAC), and secure authentication mechanisms with client/server actions.",
+        image: "/sams.png",
+        tech: ["NextJS", "TailwindCSS", "Prisma", "AuthJS", "PostgreSQL", "Vercel"],
+        features: [
+            "Document Management System with Waterfall methodology",
+            "Secure Authentication with 2FA and JWT",
+            "Role Based Access Control (RBAC)",
+            "Content Preference settings",
+            "Collaborative document sharing",
+            "HTTPS and secure client/server actions"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/scribd-clone",
+        liveUrl: "https://study-archive-management-system.vercel.app",
+        period: "Mar 2024 - Sept 2025",
+        team: "Final Year Project",
+        type: "academic"
+    },
+    {
+        id: 2,
+        title: "Study Archive Management System",
+        description: "Document Management System using Waterfall methodology, featuring Authentication, RBAC, Content Preference, and Collaboration",
+        longDescription: "Developed as a Final Year Project, this document management system enhances student study experience by providing secure document sharing features. The system implements comprehensive security measures including HTTPS, Two Factor Authentication (2FA), JSON Web Tokens (JWT), Role Based Access Control (RBAC), and secure authentication mechanisms with client/server actions.",
+        image: "/sams.png",
+        tech: ["NextJS", "TailwindCSS", "Prisma", "AuthJS", "PostgreSQL", "Vercel"],
+        features: [
+            "Document Management System with Waterfall methodology",
+            "Secure Authentication with 2FA and JWT",
+            "Role Based Access Control (RBAC)",
+            "Content Preference settings",
+            "Collaborative document sharing",
+            "HTTPS and secure client/server actions"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/scribd-clone",
+        liveUrl: "https://study-archive-management-system.vercel.app/admin",
+        period: "Mar 2024 - Sept 2025",
+        team: "Final Year Project",
+        type: "academic"
+    },
+    {
+        id: 3,
+        title: "Learning Management System (Crunchy Code)",
+        description: "Web-based platform aimed at introducing secondary school students to the basics of computer science using Agile methodology",
+        longDescription: "An IEEE Computer Society project developed in a 5-person team. The platform, named 'Crunchy Code', focuses on making coding enjoyable and interactive for secondary school students. The project emphasizes fun, challenging, and rewarding learning experiences while introducing fundamental computer science concepts.",
+        image: "/sams.png",
+        tech: ["Laravel", "Composer", "PHPMyAdmin", "Heroku", "Agile Methodology"],
+        features: [
+            "Web-based learning platform for computer science basics",
+            "Interactive coding exercises and challenges",
+            "Agile methodology development approach",
+            "Backend implementation using Laravel framework",
+            "Deployment via Heroku",
+            "Focus on making coding enjoyable and interactive"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/crunchy-code",
+        liveUrl: "https://crunchy-code.herokuapp.com",
+        period: "Nov 2023 - Dec 2023",
+        team: "IEEE Computer Society (5 members)",
+        type: "academic"
+    }
+];
