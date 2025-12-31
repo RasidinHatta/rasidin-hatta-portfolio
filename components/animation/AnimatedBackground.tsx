@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Iridescence from "@/components/react-bits/Iridescence";
 import FloatingLines from "@/components/react-bits/FloatingLines";
-import LightPillar from "../LightPillar";
+import LightPillar from "../react-bits/LightPillar";
 
 export default function AnimatedBackground() {
   const { resolvedTheme } = useTheme();
