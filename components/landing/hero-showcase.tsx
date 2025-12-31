@@ -49,7 +49,7 @@ export function HeroShowcase({
           {/* Heading with animated role */}
           <AnimatedText
             as="h1"
-            className="text-2xl font-bold text-pretty whitespace-pre-line lg:text-4xl xl:text-5xl leading-tight dark:[-webkit-text-stroke:1px_var(--color-background)] text-foreground"
+            className="text-2xl font-bold text-pretty whitespace-pre-line lg:text-4xl xl:text-5xl leading-tight text-foreground"
           >
             {/* Static Name */}
             <span className="block">{`I'm ${heading}`}</span>
