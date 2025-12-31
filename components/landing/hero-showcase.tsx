@@ -49,7 +49,7 @@ export function HeroShowcase({
           {/* Heading with animated role */}
           <AnimatedText
             as="h1"
-            className="text-2xl font-bold text-pretty whitespace-pre-line lg:text-4xl xl:text-5xl leading-tight dark:[-webkit-text-stroke:1px_var(--color-background)] dark:text-foreground"
+            className="text-2xl font-bold text-pretty whitespace-pre-line lg:text-4xl xl:text-5xl leading-tight dark:[-webkit-text-stroke:1px_var(--color-background)] text-foreground"
           >
             {/* Static Name */}
             <span className="block">{`I'm ${heading}`}</span>
@@ -81,7 +81,7 @@ export function HeroShowcase({
           {/* Description */}
           <AnimatedText
             as="p"
-            className="text-foreground/70 mb-8 max-w-xl lg:text-xl"
+            className="text-foreground/70 mb-8 max-w-xl lg:text-xl font-bold"
             delay={0.12}
           >
             {description}
@@ -116,21 +116,17 @@ export function HeroShowcase({
           </AnimatedGroup>
         </AnimatedGroup>
 
-        {/* Interactive Tilt Image with Liquid Glass Card background */}
-        <div className="flex justify-center lg:justify-end mt-12 lg:mt-0 lg:pl-8">
-          <Tilt rotationFactor={8} isRevese>
-            <LiquidGlassCard className="rounded-2xl overflow-hidden p-0">
-              <Image
-                src="/hero-example_xertaz.png"
-                alt="app screen"
-                width={2880}
-                height={1842}
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                priority
-              />
-            </LiquidGlassCard>
-          </Tilt>
-        </div>
+        <Tilt rotationFactor={8} isRevese>
+          <LiquidGlassCard className="p-1">
+            <Image
+              src="/business-card/business-card-front.png"
+              alt="app screen"
+              width={2880}
+              height={1842}
+              className="rounded-2xl"
+            />
+          </LiquidGlassCard>
+        </Tilt>
       </div>
     </motion.section>
   );

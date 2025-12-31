@@ -11,7 +11,7 @@ const Description = () => {
             </span>{" "}
             and{" "}
             <span className="inline-flex items-center gap-1 text-primary font-semibold">
-                <SiNextdotjs className="w-5 h-5 text-black dark:text-white" />
+                <SiNextdotjs className="w-5 h-5 text-foreground" />
                 NextJS
             </span>
             , focusing on performance,&nbsp; scalability, and seamless user experience
