@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Iridescence from "@/components/react-bits/Iridescence";
 import FloatingLines from "@/components/react-bits/FloatingLines";
+import LightPillar from "../LightPillar";
 
 export default function AnimatedBackground() {
   const { resolvedTheme } = useTheme();
@@ -28,16 +29,19 @@ export default function AnimatedBackground() {
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 h-full w-full bg-[#040103]"
           >
-            <FloatingLines
-              enabledWaves={["top", "middle", "bottom"]}
-              lineCount={[10, 15, 20]}
-              lineDistance={[8, 6, 4]}
-              bendRadius={5.0}
-              bendStrength={-0.5}
-              interactive={true}
-              parallax={true}
+            <LightPillar
+              topColor="#005227"
+              bottomColor="#0d7791"
+              intensity={0.8}
+              rotationSpeed={0.6}
+              interactive
+              glowAmount={0.006}
+              pillarWidth={4.5}
+              pillarHeight={0.35}
+              noiseIntensity={0.5}
+              pillarRotation={30}
             />
           </motion.div>
         ) : (
@@ -47,13 +51,19 @@ export default function AnimatedBackground() {
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 h-full w-full"
+            className="absolute inset-0 h-full w-full bg-[#9575c7]"
           >
-            <Iridescence
-              color={[1, 1, 1]}
-              mouseReact={false}
-              amplitude={0.1}
-              speed={1.0}
+            <LightPillar
+              topColor="#ce465a"
+              bottomColor="#48910d"
+              intensity={0.8}
+              rotationSpeed={0.6}
+              interactive
+              glowAmount={0.006}
+              pillarWidth={4.5}
+              pillarHeight={0.35}
+              noiseIntensity={0.5}
+              pillarRotation={30}
             />
           </motion.div>
         )}

@@ -118,6 +118,7 @@ function LiquidButton({
         <div
           className="-z-10 pointer-events-none absolute inset-0 isolate overflow-hidden rounded-md"
           style={{ backdropFilter: `url("#${filterId}")` }}
+          suppressHydrationWarning
         />
         <span className="relative z-10">{children}</span>
       </Button>
@@ -174,6 +175,7 @@ function LiquidGlassCard({
           <div
             className="-z-10 pointer-events-none absolute inset-0 overflow-hidden rounded-lg"
             style={{ backdropFilter: `url("#${filterId}")` }}
+            suppressHydrationWarning
           />
           <GlassFilter id={filterId} scale={DEFAULT_GLASS_FILTER_SCALE} />
         </>
