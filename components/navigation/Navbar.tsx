@@ -8,18 +8,20 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { navItems } from "@/data/navigation";
-import { ThemeToggle } from "../themes/theme-toggle";
+import { SettingsMenu } from "../themes/settings-menu";
 
 // Navbar Component
 export const Navbar = () => {
-
   return (
-    <nav className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500">
+    <header className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="shrink-0">
-            <Link href="/" className="cursor-target text-xl font-bold text-foreground">
+            <Link
+              href="/"
+              className="cursor-target text-xl font-bold text-foreground"
+            >
               Rasidin
             </Link>
           </div>
@@ -42,9 +44,11 @@ export const Navbar = () => {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-          <ThemeToggle />
+          <div className="flex items-center space-x-2">
+            <SettingsMenu />
+          </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };

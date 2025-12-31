@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/themes/theme-provider";
 import { Navbar } from "@/components/navigation/Navbar";
-import AnimatedBackground from "@/components/animation/AnimatedBackground";
-import TargetCursor from "@/components/react-bits/TargetCursor";
+import { EffectsProvider } from "@/components/providers/effects-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,12 +36,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AnimatedBackground />
-          <TargetCursor />
-          <div className="relative z-10 flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1 w-full">{children}</main>
-          </div>
+          <EffectsProvider>
+            <div className="relative z-10 flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1 w-full">{children}</main>
+            </div>
+          </EffectsProvider>
         </ThemeProvider>
       </body>
     </html>

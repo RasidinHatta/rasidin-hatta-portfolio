@@ -19,9 +19,11 @@ export function HeroShowcase() {
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ type: "spring", bounce: 0.32, duration: 0.9 }}
     >
-      <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 py-24 lg:grid-cols-2 lg:gap-20">
+      <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 py-12 md:gap-10 md:px-6 md:py-20 lg:grid-cols-2 lg:gap-20">
         <MemoizedIntroText />
-        <BusinessCard />
+        <div className="w-full max-w-md mx-auto lg:max-w-none">
+          <BusinessCard />
+        </div>
       </div>
     </motion.section>
   );

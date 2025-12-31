@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { AnimatedGroup } from "../animation/AnimatedGroup";
 import { AnimatedText } from "../animation/AnimatedText";
 import { TypingText } from "../ui/typing-text";
@@ -8,18 +9,18 @@ import Link from "next/link";
 import Description from "./desctiption";
 
 interface IntroTextProps {
-    heading?: string;
-    description?: React.ReactNode;
-    buttons?: {
-        primary: {
-            text: string;
-            url: string;
-        };
-        secondary: {
-            text: string;
-            url: string;
-        };
+  heading?: string;
+  description?: React.ReactNode;
+  buttons?: {
+    primary: {
+      text: string;
+      url: string;
     };
+    secondary: {
+      text: string;
+      url: string;
+    };
+  };
 }
 
 const IntroText = ({
@@ -48,18 +49,27 @@ const IntroText = ({
           a
           <span className="min-w-[18ch] inline-flex justify-start">
             <TypingText
-              texts={[
-                "Full Stack Developer",
-                "Network Engineer",
-              ]}
+              texts={["Full Stack Developer", "Network Engineer"]}
               className="font-bold text-2xl lg:text-4xl xl:text-5xl whitespace-nowrap inline-flex items-baseline"
               speed={70}
-              deleteSpeed={40}
-              pauseDuration={1500}
+              deleteSpeed={70}
+              pauseDuration={2000}
               loop={true}
               showCursor={true}
-              cursor="▌"
-              cursorClassName="text-primary font-light scale-x-50"
+              blinkingCursor={false}
+              cursor={(isDeleting) => (
+                <Image
+                  src="/rainbow-cat.gif"
+                  alt="cursor"
+                  width={35}
+                  height={35}
+                  unoptimized
+                  className={`inline-block -translate-y-1 transition-transform duration-200 ${
+                    isDeleting ? "scale-x-[-1]" : ""
+                  }`}
+                />
+              )}
+              cursorClassName=""
             />
           </span>
         </span>
