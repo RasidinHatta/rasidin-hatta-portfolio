@@ -114,7 +114,7 @@ export const skills = [
   },
   {
     category: "Web Development",
-    items: ["Laravel", "NextJS", "NestJS", "JavaScript API Framework", "PHP", "TailwindCSS", "Prisma", "AuthJS"],
+    items: ["NextJS", "NestJS", "ReactBit", "ShadcnUI", "TailwindCSS", "Prisma", "AuthJS"],
     icon: Code
   },
   {
