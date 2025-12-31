@@ -117,7 +117,7 @@ export function HeroShowcase({
         </AnimatedGroup>
 
         <Tilt rotationFactor={8} isRevese>
-          <LiquidGlassCard className="p-1">
+          <LiquidGlassCard className="p-1 cursor-target">
             <Image
               src="/business-card/business-card-front.png"
               alt="app screen"
