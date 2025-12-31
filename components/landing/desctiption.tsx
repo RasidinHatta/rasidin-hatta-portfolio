@@ -5,12 +5,12 @@ const Description = () => {
     return (
         <>
             Designing and developing modern web applications with{" "}
-            <span className="inline-flex items-center gap-1 text-primary font-semibold">
+            <span className="inline-flex items-center gap-1 text-background dark:text-primary font-semibold">
                 <SiReact className="w-5 h-5 text-sky-400" />
                 React
             </span>{" "}
             and{" "}
-            <span className="inline-flex items-center gap-1 text-primary font-semibold">
+            <span className="inline-flex items-center gap-1 text-background dark:text-primary font-semibold">
                 <SiNextdotjs className="w-5 h-5 text-foreground" />
                 NextJS
             </span>

@@ -49,10 +49,8 @@ const IntroText = ({
           <span className="min-w-[18ch] inline-flex justify-start">
             <TypingText
               texts={[
-                "Frontend Developer",
-                "Backend Analyst",
+                "Full Stack Developer",
                 "Network Engineer",
-                "UI/UX Designer",
               ]}
               className="font-bold text-2xl lg:text-4xl xl:text-5xl whitespace-nowrap inline-flex items-baseline"
               speed={70}
