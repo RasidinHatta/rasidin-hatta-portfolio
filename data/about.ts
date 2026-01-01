@@ -119,7 +119,7 @@ export const skills = [
   },
   {
     category: "3D & Interactive Web",
-    items: ["Spline", "ThreeJS", "3D Website Development", "Interactive Design", "WebGL"],
+    items: ["Spline", "ThreeJS", "WebGL"],
     icon: Globe
   },
   {
