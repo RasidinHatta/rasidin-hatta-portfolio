@@ -20,7 +20,7 @@ import AnimatedSection from "@/components/ui/animated-section";
 import { useState } from "react";
 
 const Experience = () => {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
   const timelineItems: ExperienceType[] = [...experiences, ...projects];
 
   return (
@@ -39,18 +39,16 @@ const Experience = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`relative flex items-center mb-8 ${
-              index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-            }`}
+            className={`relative flex items-center mb-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
           >
             <motion.div
-              className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background border-4 rounded-full z-10 cursor-pointer ${
-                exp.type === "work"
+              className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-background border-4 rounded-full z-10 cursor-pointer ${exp.type === "work"
                   ? "border-blue-500"
                   : exp.type === "education"
-                  ? "border-green-500"
-                  : "border-purple-500"
-              }`}
+                    ? "border-green-500"
+                    : "border-purple-500"
+                }`}
               whileHover={{ scale: 1.3 }}
               onClick={() =>
                 setExpandedId(expandedId === exp.id ? null : exp.id)
@@ -58,9 +56,8 @@ const Experience = () => {
             ></motion.div>
 
             <div
-              className={`ml-20 md:ml-0 md:w-1/2 ${
-                index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"
-              }`}
+              className={`ml-20 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"
+                }`}
             >
               <motion.div
                 onClick={() =>
@@ -71,9 +68,8 @@ const Experience = () => {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] cursor-pointer">
                   <CardContent className="p-6">
                     <div
-                      className={`flex items-center gap-2 mb-2 ${
-                        index % 2 === 0 ? "md:justify-end" : ""
-                      }`}
+                      className={`flex items-center gap-2 mb-2 ${index % 2 === 0 ? "md:justify-end" : ""
+                        }`}
                     >
                       {exp.type === "work" ? (
                         <Briefcase className="w-5 h-5 text-blue-500" />
@@ -86,29 +82,26 @@ const Experience = () => {
                         {exp.type === "work"
                           ? "Work Experience"
                           : exp.type === "education"
-                          ? "Education"
-                          : "Project"}
+                            ? "Education"
+                            : "Project"}
                       </span>
                     </div>
 
                     <div
-                      className={`flex items-center justify-between gap-4 ${
-                        index % 2 === 0 ? "md:flex-row-reverse" : ""
-                      }`}
+                      className={`flex items-center justify-between gap-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
+                        }`}
                     >
                       <div>
                         <h3
-                          className={`text-xl font-bold mb-1 text-foreground ${
-                            index % 2 === 0 ? "md:text-right" : ""
-                          }`}
+                          className={`text-xl font-bold mb-1 text-foreground ${index % 2 === 0 ? "md:text-right" : ""
+                            }`}
                         >
                           {exp.title}
                         </h3>
 
                         <p
-                          className={`text-primary font-medium mb-1 ${
-                            index % 2 === 0 ? "md:text-right" : ""
-                          }`}
+                          className={`text-primary font-medium mb-1 ${index % 2 === 0 ? "md:text-right" : ""
+                            }`}
                         >
                           {exp.company}
                         </p>
@@ -124,9 +117,8 @@ const Experience = () => {
                     </div>
 
                     <div
-                      className={`flex items-center gap-4 text-sm text-muted-foreground mb-3 ${
-                        index % 2 === 0 ? "md:justify-end" : ""
-                      }`}
+                      className={`flex items-center gap-4 text-sm text-muted-foreground mb-3 ${index % 2 === 0 ? "md:justify-end" : ""
+                        }`}
                     >
                       <span className="flex items-center gap-1">
                         <MapPin className="w-3 h-3" />
@@ -156,9 +148,8 @@ const Experience = () => {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: 0.1 }}
-                              className={`text-foreground mb-2 ${
-                                index % 2 === 0 ? "md:text-right" : ""
-                              }`}
+                              className={`text-foreground mb-2 ${index % 2 === 0 ? "md:text-right" : ""
+                                }`}
                             >
                               <Link
                                 href={exp.githubUrl}
@@ -175,9 +166,8 @@ const Experience = () => {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: 0.15 }}
-                              className={`text-foreground mb-2 ${
-                                index % 2 === 0 ? "md:text-right" : ""
-                              }`}
+                              className={`text-foreground mb-2 ${index % 2 === 0 ? "md:text-right" : ""
+                                }`}
                             >
                               <Link
                                 href={exp.liveUrl}
@@ -194,9 +184,8 @@ const Experience = () => {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.2 }}
-                              className={`flex flex-wrap gap-2 mb-3 ${
-                                index % 2 === 0 ? "md:justify-end" : ""
-                              }`}
+                              className={`flex flex-wrap gap-2 mb-3 ${index % 2 === 0 ? "md:justify-end" : ""
+                                }`}
                             >
                               {exp.tech.map((tech: string, techIndex: number) => (
                                 <motion.span
@@ -220,9 +209,8 @@ const Experience = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ delay: 0.25 }}
-                              className={`space-y-2 ${
-                                index % 2 === 0 ? "md:text-right" : ""
-                              }`}
+                              className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : ""
+                                }`}
                             >
                               {exp.achievements.map(
                                 (achievement: string, achIndex: number) => (
