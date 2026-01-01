@@ -2,8 +2,8 @@
 
 /**
  * @author: @dorianbaffier
- * @description: Liquid Glass Card - Optimized with Shadcn UI
- * @version: 2.0.0
+ * @description: Liquid Glass Card – Optimised with Shadcn UI
+ * @version: 2.0.1  (hydration-safe ids)
  * @date: 2025-10-11
  * @license: MIT
  * @website: https://kokonutui.com
@@ -18,7 +18,7 @@ import { Button, type ButtonProps } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-// Constants for better maintainability
+/* ----------  CONSTANTS  ---------- */
 const GLASS_SHADOW_LIGHT =
   "shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)]";
 
@@ -30,11 +30,8 @@ const GLASS_SHADOW = `${GLASS_SHADOW_LIGHT} ${GLASS_SHADOW_DARK}`;
 const DEFAULT_GLASS_FILTER_SCALE = 30;
 const BUTTON_GLASS_FILTER_SCALE = 70;
 
-// Shared glass filter component
-type GlassFilterProps = {
-  id: string;
-  scale?: number;
-};
+/* ----------  SHARED GLASS FILTER  ---------- */
+type GlassFilterProps = { id: string; scale?: number };
 
 const GlassFilter = React.memo(
   ({ id, scale = DEFAULT_GLASS_FILTER_SCALE }: GlassFilterProps) => (
@@ -51,16 +48,12 @@ const GlassFilter = React.memo(
         >
           <feTurbulence
             baseFrequency="0.05 0.05"
-            numOctaves="1"
+            numOctaves={1}
             result="turbulence"
-            seed="1"
+            seed={1}
             type="fractalNoise"
           />
-          <feGaussianBlur
-            in="turbulence"
-            result="blurredNoise"
-            stdDeviation="2"
-          />
+          <feGaussianBlur in="turbulence" result="blurredNoise" stdDeviation={2} />
           <feDisplacementMap
             in="SourceGraphic"
             in2="blurredNoise"
@@ -69,7 +62,7 @@ const GlassFilter = React.memo(
             xChannelSelector="R"
             yChannelSelector="B"
           />
-          <feGaussianBlur in="displaced" result="finalBlur" stdDeviation="4" />
+          <feGaussianBlur in="displaced" result="finalBlur" stdDeviation={4} />
           <feComposite in="finalBlur" in2="finalBlur" operator="over" />
         </filter>
       </defs>
@@ -78,17 +71,12 @@ const GlassFilter = React.memo(
 );
 GlassFilter.displayName = "GlassFilter";
 
-// Liquid Button - extends shadcn Button with glass effect
+/* ----------  LIQUID BUTTON  ---------- */
 const liquidButtonVariants = cva("relative transition-transform duration-300", {
   variants: {
-    liquidVariant: {
-      default: "hover:scale-105",
-      none: "",
-    },
+    liquidVariant: { default: "hover:scale-105", none: "" },
   },
-  defaultVariants: {
-    liquidVariant: "default",
-  },
+  defaultVariants: { liquidVariant: "default" },
 });
 
 export type LiquidButtonProps = ButtonProps & {
@@ -101,24 +89,16 @@ function LiquidButton({
   children,
   ...props
 }: LiquidButtonProps) {
-  const filterId = React.useId();
+  // hydration-safe id
+  const [filterId] = React.useState(() => `lb-${Math.random().toString(36).slice(2, 8)}`);
 
   return (
     <>
-      <Button
-        className={cn(liquidButtonVariants({ liquidVariant }), className)}
-        {...props}
-      >
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 rounded-full transition-all",
-            GLASS_SHADOW
-          )}
-        />
+      <Button className={cn(liquidButtonVariants({ liquidVariant }), className)} {...props}>
+        <div className={cn("pointer-events-none absolute inset-0 rounded-full transition-all", GLASS_SHADOW)} />
         <div
           className="-z-10 pointer-events-none absolute inset-0 isolate overflow-hidden rounded-md"
           style={{ backdropFilter: `url("#${filterId}")` }}
-          suppressHydrationWarning
         />
         <span className="relative z-10">{children}</span>
       </Button>
@@ -127,27 +107,19 @@ function LiquidButton({
   );
 }
 
-// Liquid Glass Card - extends shadcn Card with glass effect
+/* ----------  LIQUID GLASS CARD  ---------- */
 const liquidGlassCardVariants = cva(
   "group relative overflow-hidden bg-background/20 backdrop-blur-[2px] transition-all duration-300",
   {
     variants: {
-      glassSize: {
-        sm: "p-4",
-        default: "p-6",
-        lg: "p-8",
-      },
+      glassSize: { sm: "p-4", default: "p-6", lg: "p-8" },
     },
-    defaultVariants: {
-      glassSize: "default",
-    },
+    defaultVariants: { glassSize: "default" },
   }
 );
 
 export type LiquidGlassCardProps = React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof liquidGlassCardVariants> & {
-    glassEffect?: boolean;
-  };
+  VariantProps<typeof liquidGlassCardVariants> & { glassEffect?: boolean };
 
 function LiquidGlassCard({
   className,
@@ -156,26 +128,18 @@ function LiquidGlassCard({
   children,
   ...props
 }: LiquidGlassCardProps) {
-  const filterId = React.useId();
+  // hydration-safe id
+  const [filterId] = React.useState(() => `lgc-${Math.random().toString(36).slice(2, 8)}`);
 
   return (
-    <Card
-      className={cn(liquidGlassCardVariants({ glassSize }), className)}
-      {...props}
-    >
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 rounded-lg transition-all",
-          GLASS_SHADOW
-        )}
-      />
+    <Card className={cn(liquidGlassCardVariants({ glassSize }), className)} {...props}>
+      <div className={cn("pointer-events-none absolute inset-0 rounded-lg transition-all", GLASS_SHADOW)} />
 
       {glassEffect && (
         <>
           <div
             className="-z-10 pointer-events-none absolute inset-0 overflow-hidden rounded-lg"
             style={{ backdropFilter: `url("#${filterId}")` }}
-            suppressHydrationWarning
           />
           <GlassFilter id={filterId} scale={DEFAULT_GLASS_FILTER_SCALE} />
         </>
@@ -188,7 +152,7 @@ function LiquidGlassCard({
   );
 }
 
-// Demo: Music Player Card
+/* ----------  DEMO: MUSIC PLAYER  ---------- */
 const TOTAL_DURATION = 45;
 const VOLUME_BAR_COUNT = 8;
 const SEEK_JUMP_SECONDS = 5;
@@ -204,9 +168,7 @@ const formatTime = (timeInSeconds: number): string => {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 };
 
-type VolumeBarsProps = {
-  isPlaying: boolean;
-};
+type VolumeBarsProps = { isPlaying: boolean };
 
 const VolumeBars = React.memo(({ isPlaying }: VolumeBarsProps) => {
   const bars = Array.from({ length: VOLUME_BAR_COUNT }, (_, i) => ({
@@ -218,10 +180,7 @@ const VolumeBars = React.memo(({ isPlaying }: VolumeBarsProps) => {
     <div className="pointer-events-none flex h-8 w-10 items-end gap-0.5">
       {bars.map((bar) => (
         <div
-          className={cn(
-            "w-[3px] rounded-sm",
-            isPlaying && "animate-bounce-music"
-          )}
+          className={cn("w-[3px] rounded-sm", isPlaying && "animate-bounce-music")}
           key={bar.id}
           style={{
             height: isPlaying ? undefined : STATIC_BAR_HEIGHT,
@@ -243,28 +202,19 @@ type ProgressBarProps = {
 
 const ProgressBar = React.memo(
   ({ currentTime, totalDuration, onSeek }: ProgressBarProps) => {
-    const progress =
-      (currentTime / totalDuration) * PROGRESS_PERCENTAGE_MULTIPLIER;
+    const progress = (currentTime / totalDuration) * PROGRESS_PERCENTAGE_MULTIPLIER;
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-      const bar = e.currentTarget;
-      const rect = bar.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const percent = x / rect.width;
-      const newTime = Math.min(
-        Math.max(MIN_TIME, percent * totalDuration),
-        totalDuration
-      );
+      const rect = e.currentTarget.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      const newTime = Math.min(Math.max(MIN_TIME, percent * totalDuration), totalDuration);
       onSeek(newTime);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        const newTime = Math.min(
-          currentTime + SEEK_JUMP_SECONDS,
-          totalDuration
-        );
+        const newTime = Math.min(currentTime + SEEK_JUMP_SECONDS, totalDuration);
         onSeek(newTime);
       }
     };
@@ -297,37 +247,29 @@ const ProgressBar = React.memo(
 );
 ProgressBar.displayName = "ProgressBar";
 
+/* ----------  NOTIFICATION CENTRE (EXPORTED DEMO)  ---------- */
 export function NotificationCenter() {
   const [isPlaying, setIsPlaying] = React.useState(true);
   const [currentTime, setCurrentTime] = React.useState(MIN_TIME);
 
   React.useEffect(() => {
-    if (!isPlaying || currentTime >= TOTAL_DURATION) {
-      return;
-    }
-
-    const intervalId = setInterval(() => {
-      setCurrentTime((prev) => {
-        if (prev >= TOTAL_DURATION) {
+    if (!isPlaying || currentTime >= TOTAL_DURATION) return;
+    const id = setInterval(() => {
+      setCurrentTime((p) => {
+        if (p >= TOTAL_DURATION) {
           setIsPlaying(false);
           return TOTAL_DURATION;
         }
-        return prev + 1;
+        return p + 1;
       });
     }, TIMER_INTERVAL_MS);
-
-    return () => clearInterval(intervalId);
+    return () => clearInterval(id);
   }, [isPlaying, currentTime]);
 
-  const handlePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
-
+  const handlePlayPause = () => setIsPlaying((p) => !p);
   const handleSeek = (newTime: number) => {
     setCurrentTime(newTime);
-    if (newTime < TOTAL_DURATION && !isPlaying) {
-      setIsPlaying(true);
-    }
+    if (newTime < TOTAL_DURATION && !isPlaying) setIsPlaying(true);
   };
 
   return (
@@ -345,68 +287,33 @@ export function NotificationCenter() {
           </div>
 
           <div className="flex-1 overflow-hidden">
-            <h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-lg text-zinc-900 dark:text-white">
-              Glow
-            </h3>
-            <p className="mt-0.5 text-sm text-zinc-600 dark:text-zinc-400">
-              Echo
-            </p>
+            <h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-lg text-zinc-900 dark:text-white">Glow</h3>
+            <p className="mt-0.5 text-sm text-zinc-600 dark:text-zinc-400">Echo</p>
           </div>
 
           <VolumeBars isPlaying={isPlaying} />
         </div>
 
         <div className="flex flex-col gap-2">
-          <ProgressBar
-            currentTime={currentTime}
-            onSeek={handleSeek}
-            totalDuration={TOTAL_DURATION}
-          />
+          <ProgressBar currentTime={currentTime} totalDuration={TOTAL_DURATION} onSeek={handleSeek} />
 
           <div className="mt-1 flex items-center justify-between">
             <div className="flex items-center justify-center gap-2">
-              <LiquidButton
-                aria-label="Previous track"
-                className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
-                size="icon"
-                variant="ghost"
-              >
+              <LiquidButton aria-label="Previous track" className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80" size="icon" variant="ghost">
                 <ArrowLeft className="size-4" />
               </LiquidButton>
-              <LiquidButton
-                aria-label={isPlaying ? "Pause" : "Play"}
-                className="h-11 w-11 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
-                onClick={handlePlayPause}
-                size="icon"
-                variant="ghost"
-              >
-                {isPlaying ? (
-                  <Pause className="size-5" />
-                ) : (
-                  <Play className="size-5" />
-                )}
+
+              <LiquidButton aria-label={isPlaying ? "Pause" : "Play"} className="h-11 w-11 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80" onClick={handlePlayPause} size="icon" variant="ghost">
+                {isPlaying ? <Pause className="size-5" /> : <Play className="size-5" />}
               </LiquidButton>
-              <LiquidButton
-                aria-label="Next track"
-                className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
-                size="icon"
-                variant="ghost"
-              >
+
+              <LiquidButton aria-label="Next track" className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80" size="icon" variant="ghost">
                 <ArrowRight className="size-4" />
               </LiquidButton>
             </div>
-            <LiquidButton
-              aria-label="More options"
-              className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80"
-              size="icon"
-              variant="ghost"
-            >
-              <svg
-                className="size-4"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+
+            <LiquidButton aria-label="More options" className="h-10 w-10 rounded-full bg-transparent text-zinc-700 transition-colors hover:bg-zinc-200/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80" size="icon" variant="ghost">
+              <svg className="size-4" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                 <title>Options</title>
                 <path d="M6.634 1.135A7 7 0 0 1 15 8a.5.5 0 0 1-1 0 6 6 0 1 0-6.5 5.98v-1.005A5 5 0 1 1 13 8a.5.5 0 0 1-1 0 4 4 0 1 0-4.5 3.969v-1.011A2.999 2.999 0 1 1 11 8a.5.5 0 0 1-1 0 2 2 0 1 0-2.5 1.936v-1.07a1 1 0 1 1 1 0V15.5a.5.5 0 0 1-1 0v-.518a7 7 0 0 1-.866-13.847" />
               </svg>
@@ -418,5 +325,6 @@ export function NotificationCenter() {
   );
 }
 
+/* ----------  PUBLIC API  ---------- */
 export { LiquidButton, LiquidGlassCard };
 export default NotificationCenter;
