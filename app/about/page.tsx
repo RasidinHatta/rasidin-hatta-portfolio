@@ -24,6 +24,8 @@ import { useRef } from "react"
 import Link from "next/link"
 import { experiences, personalInfo, projects, skills, socialLinks } from "@/data/about"
 import { Experience } from "@/types/experience"
+import { FaGithub } from "react-icons/fa"
+import { CgWebsite } from "react-icons/cg"
 
 // Reusable component for scroll-triggered animations
 const AnimatedSection = ({ children, className = "" }: { 
@@ -343,6 +345,30 @@ export default function AboutPage() {
                       <p className="text-foreground mb-3">
                         {exp.description}
                       </p>
+
+                      {exp.githubUrl && (
+                        <p className={`text-foreground mb-3 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                          <Link 
+                            href={exp.githubUrl} 
+                            target="_blank" 
+                            className="text-primary hover:underline inline-flex items-center gap-1"
+                          >
+                            GITHUB <FaGithub />
+                          </Link>
+                        </p>
+                      )}
+
+                      {exp.liveUrl && (
+                        <p className={`text-foreground mb-3 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                          <Link 
+                            href={exp.liveUrl} 
+                            target="_blank" 
+                            className="text-primary hover:underline inline-flex items-center gap-1"
+                          >
+                            WEBSITE <CgWebsite />
+                          </Link>
+                        </p>
+                      )}
                       
                       {exp.tech && (
                         <div className={`flex flex-wrap gap-2 mb-3 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>

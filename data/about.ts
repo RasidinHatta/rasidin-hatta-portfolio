@@ -35,8 +35,8 @@ export const experiences: Experience[] = [
     longDescription: undefined,
     team: undefined,
     features: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined
+    githubUrl: "",
+    liveUrl: ""
   },
   {
     id: 2,
@@ -55,8 +55,8 @@ export const experiences: Experience[] = [
     longDescription: undefined,
     team: undefined,
     features: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined
+    githubUrl: "",
+    liveUrl: ""
   }
 ]
 
@@ -79,8 +79,8 @@ export const projects: Experience[] = [
     longDescription: undefined,
     team: undefined,
     features: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined
+    githubUrl: "https://github.com/RasidinHatta/scribd-clone",
+    liveUrl: "https://study-archive-management-system.vercel.app"
   },
   {
     id: 4,
@@ -100,8 +100,8 @@ export const projects: Experience[] = [
     longDescription: undefined,
     team: undefined,
     features: undefined,
-    githubUrl: undefined,
-    liveUrl: undefined
+    githubUrl: "",
+    liveUrl: ""
   }
 ]
 

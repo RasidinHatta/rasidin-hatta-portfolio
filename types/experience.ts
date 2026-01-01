@@ -7,8 +7,8 @@ export interface Experience {
   longDescription: ReactNode;
   team: ReactNode;
   features: any;
-  githubUrl: any;
-  liveUrl: any;
+  githubUrl: string;
+  liveUrl: string;
   id: number;
   title: string;
   company: string;
