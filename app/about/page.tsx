@@ -392,7 +392,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { name: "Dr. Nurfazrina Binti Mohd Zamry", role: "FYP Supervisor", email: "nurfazrina.mz@utm.my" },
-              { name: "Prof. Madya. Dr. Mohd. Murtadha bin Mohamad", role: "Academic Supervisor", email: "murtadha@utm.my" },
+              { name: "Prof. Madya. Dr. Mohd. Murtadha bin Mohamad", role: "Academic Advisor", email: "murtadha@utm.my" },
               { name: "Sheik Hazrin Bin Sheik Othman", role: "Senior IT Executive | Industrial Supervisor", email: "sheikhazrin@kiswiresea.com" }
             ].map((ref, index) => (
               <motion.div
