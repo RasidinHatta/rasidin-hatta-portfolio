@@ -9,11 +9,10 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-16 max-w-6xl">
-        {/* Introduction Section */}
         <Introduction />
-        {/* <Skills />
+        <Skills />
         <Experience />
-        <References /> */}
+        <References />
       </div>
     </div>
   );

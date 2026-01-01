@@ -7,6 +7,8 @@ import {
   Loader2,
   Download,
   Eye,
+  Copy,
+  Check,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "../ui/button";
@@ -18,6 +20,8 @@ import Link from "next/link";
 
 const Introduction = () => {
   const [isDownloading, setIsDownloading] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
 
   const handleDownloadResume = async () => {
     try {
@@ -48,6 +52,18 @@ const Introduction = () => {
   const handleContact = () => {
     window.location.href = `mailto:${personalInfo.email}`;
   };
+
+  const handleCopyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const contactItems = [
+    { icon: MapPin, label: "location", value: personalInfo.location, copyable: false },
+    { icon: Mail, label: "email", value: personalInfo.email, copyable: true },
+    { icon: Phone, label: "phone", value: personalInfo.phone, copyable: true },
+  ];
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -62,8 +78,10 @@ const Introduction = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              className="cursor-pointer"
             >
-              <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-background shadow-lg">
+              <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-background shadow-lg hover:shadow-xl transition-shadow">
                 <AvatarImage
                   src={personalInfo.avatar}
                   alt={personalInfo.name}
@@ -106,18 +124,43 @@ const Introduction = () => {
                 transition={{ delay: 0.6 }}
                 className="flex flex-wrap gap-4 justify-center md:justify-start mb-6"
               >
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <MapPin className="w-4 h-4" />
-                  <span>{personalInfo.location}</span>
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Mail className="w-4 h-4" />
-                  <span>{personalInfo.email}</span>
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Phone className="w-4 h-4" />
-                  <span>{personalInfo.phone}</span>
-                </div>
+                {contactItems.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    onClick={() =>
+                      item.copyable &&
+                      handleCopyToClipboard(item.value, item.label)
+                    }
+                    className={`flex items-center gap-2 text-muted-foreground rounded-lg px-3 py-2 transition-all ${
+                      item.copyable
+                        ? "cursor-pointer hover:bg-secondary hover:text-foreground"
+                        : ""
+                    }`}
+                  >
+                    <item.icon className="w-4 h-4" />
+                    <span>{item.value}</span>
+                    {item.copyable && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{
+                          opacity:
+                            copiedField === item.label ? 1 : 0.5,
+                          scale: 1,
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {copiedField === item.label ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
               </motion.div>
 
               <motion.div
@@ -180,15 +223,22 @@ const Introduction = () => {
                 className="flex gap-4 mt-6 justify-center md:justify-start"
               >
                 {socialLinks.map((social, index: number) => (
-                  <Link
+                  <motion.div
                     key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+                    onMouseEnter={() => setHoveredSocial(index)}
+                    onMouseLeave={() => setHoveredSocial(null)}
+                    whileHover={{ scale: 1.2, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <social.icon className="w-5 h-5 text-muted-foreground" />
-                  </Link>
+                    <Link
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 inline-block"
+                    >
+                      <social.icon className="w-5 h-5" />
+                    </Link>
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
