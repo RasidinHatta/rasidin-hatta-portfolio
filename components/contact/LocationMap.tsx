@@ -2,10 +2,14 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "motion/react"
-import { Button } from "@/components/ui/button"
-import { MapPin, ExternalLink } from "lucide-react"
+import { MapPin } from "lucide-react"
+import { Map, MapMarker, MarkerContent, MarkerPopup } from "@/components/ui/map"
 
 const LocationMap = () => {
+  // Johor Bahru, Malaysia coordinates
+  const latitude = 1.4854
+  const longitude = 103.7618
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 30 }}
@@ -20,31 +24,31 @@ const LocationMap = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          <motion.div
-            className="relative h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex flex-col items-center justify-center cursor-pointer overflow-hidden group"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="absolute inset-0 bg-grid-pattern opacity-5 group-hover:opacity-10 transition-opacity duration-300" />
-            <div className="relative z-10 text-center space-y-4">
-              <p className="text-muted-foreground text-sm">📍 Map Embed</p>
-              <p className="text-foreground font-medium">Click to open in Google Maps</p>
-              <Button
-                asChild
-                className="gap-2 transition-all duration-200 hover:scale-105"
-              >
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex"
-                >
-                  <MapPin className="w-4 h-4" />
-                  Open Map
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
-            </div>
-          </motion.div>
+          <div className="h-64 w-full rounded-lg overflow-hidden">
+            <Map
+              initialViewState={{
+                latitude,
+                longitude,
+                zoom: 12,
+              }}
+              mapStyle="mapbox://styles/mapbox/streets-v12"
+            >
+              <MapMarker latitude={latitude} longitude={longitude}>
+                <MarkerContent>
+                  <div className="relative flex items-center justify-center">
+                    <div className="relative h-8 w-8 rounded-full border-4 border-white bg-red-500 shadow-lg animate-pulse" />
+                    <div className="absolute h-8 w-8 rounded-full border-2 border-red-500 bg-red-500/20 animate-ping" />
+                  </div>
+                </MarkerContent>
+                <MarkerPopup closeButton>
+                  <div className="space-y-2">
+                    <p className="font-semibold text-sm">Johor Bahru, Malaysia</p>
+                    <p className="text-xs text-muted-foreground">📍 My Location</p>
+                  </div>
+                </MarkerPopup>
+              </MapMarker>
+            </Map>
+          </div>
         </CardContent>
       </Card>
     </motion.div>
