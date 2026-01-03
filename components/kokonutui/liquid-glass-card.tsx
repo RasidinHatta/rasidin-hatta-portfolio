@@ -90,7 +90,7 @@ function LiquidButton({
   ...props
 }: LiquidButtonProps) {
   // hydration-safe id
-  const [filterId] = React.useState(() => `lb-${Math.random().toString(36).slice(2, 8)}`);
+  const filterId = React.useId();
 
   return (
     <>
@@ -129,7 +129,7 @@ function LiquidGlassCard({
   ...props
 }: LiquidGlassCardProps) {
   // hydration-safe id
-  const [filterId] = React.useState(() => `lgc-${Math.random().toString(36).slice(2, 8)}`);
+  const filterId = React.useId();
 
   return (
     <Card className={cn(liquidGlassCardVariants({ glassSize }), className)} {...props}>
