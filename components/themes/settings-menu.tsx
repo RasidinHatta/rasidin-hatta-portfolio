@@ -37,9 +37,9 @@ export function SettingsMenu() {
         <Button
           variant="ghost"
           size="icon"
-          className="cursor-target rounded-full bg-transparent hover:bg-white/10 dark:hover:bg-white/5"
+          className="group cursor-target rounded-full bg-transparent hover:bg-white/10 dark:hover:bg-white/5"
         >
-          <Settings className="h-5 w-5" />
+          <Settings className="h-5 w-5 transition-transform duration-300 group-hover:rotate-180" />
           <span className="sr-only">Open settings</span>
         </Button>
       </DropdownMenuTrigger>
