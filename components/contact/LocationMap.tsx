@@ -26,12 +26,8 @@ const LocationMap = () => {
         <CardContent className="p-0">
           <div className="h-64 w-full rounded-lg overflow-hidden">
             <Map
-              initialViewState={{
-                latitude,
-                longitude,
-                zoom: 12,
-              }}
-              mapStyle="mapbox://styles/mapbox/streets-v12"
+              center={[longitude, latitude]}
+              zoom={12}
             >
               <MapMarker latitude={latitude} longitude={longitude}>
                 <MarkerContent>
