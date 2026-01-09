@@ -5,7 +5,6 @@ import {
   Moon,
   Sun,
   Settings,
-  Sparkles,
   MousePointer2,
   Check,
 } from "lucide-react";
@@ -25,8 +24,6 @@ import {
 export function SettingsMenu() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const {
-    isBackgroundEnabled,
-    toggleBackground,
     isCursorEnabled,
     toggleCursor,
   } = useEffects();
@@ -68,22 +65,6 @@ export function SettingsMenu() {
 
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Effects</DropdownMenuLabel>
-
-        <DropdownMenuItem className="cursor-target" onClick={toggleBackground}>
-          <div className="flex items-center w-full justify-between gap-4">
-            <span className="flex items-center gap-2">
-              <Sparkles
-                className={`h-4 w-4 ${
-                  isBackgroundEnabled
-                    ? "text-yellow-500 fill-yellow-500"
-                    : "text-muted-foreground"
-                }`}
-              />
-              Background
-            </span>
-            {isBackgroundEnabled && <Check className="h-4 w-4" />}
-          </div>
-        </DropdownMenuItem>
 
         <DropdownMenuItem className="cursor-target" onClick={toggleCursor}>
           <div className="flex items-center w-full justify-between gap-4">

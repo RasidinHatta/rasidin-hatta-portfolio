@@ -275,3 +275,16 @@ body::before {
     @apply rounded-none! shadow-none!;
   }
 }
+
+/* Sidebar and Sheet fixes */
+[data-state="open"] {
+  overflow: hidden !important;
+}
+
+.sheet {
+  overflow: hidden !important;
+}
+
+.sheet-content {
+  overflow: hidden !important;
+}

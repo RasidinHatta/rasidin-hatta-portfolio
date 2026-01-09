@@ -34,7 +34,7 @@ const IntroText = ({
   return (
     <AnimatedGroup
       preset="blur-slide"
-      className="mx-auto flex flex-col items-center text-center md:ml-auto lg:max-w-3xl lg:items-start lg:text-left"
+      className="mx-auto flex flex-col items-start text-left md:mx-auto md:items-center md:text-center lg:max-w-3xl lg:items-start lg:text-left"
     >
       {/* Heading with animated role */}
       <AnimatedText
@@ -78,7 +78,7 @@ const IntroText = ({
       {/* Description */}
       <AnimatedText
         as="p"
-        className="text-foreground/70 mb-8 max-w-xl lg:text-xl font-bold"
+        className="text-sm sm:text-base lg:text-xl text-foreground/70 mb-8 max-w-lg font-bold"
         delay={0.12}
       >
         {description}
@@ -87,7 +87,7 @@ const IntroText = ({
       {/* Buttons */}
       <AnimatedGroup
         preset="slide"
-        className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start"
+        className="flex flex-col gap-2 sm:flex-row lg:justify-start"
       >
         {buttons.primary && (
           <Button
