@@ -142,7 +142,7 @@
 
 body {
   @apply overscroll-none bg-transparent;
-  contain: layout style;
+  /* contain: layout style; */
 }
 
 body::before {
