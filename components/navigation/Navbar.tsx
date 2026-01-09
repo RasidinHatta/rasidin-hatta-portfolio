@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   if (isMobile) {
     return (
-      <header className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500 md:hidden">
+      <header className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500 md:hidden border-b border-white/20 bg-white/10 backdrop-blur-lg dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
