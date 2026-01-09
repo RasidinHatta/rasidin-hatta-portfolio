@@ -13,6 +13,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Sidebar,
   SidebarContent,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -94,9 +95,17 @@ export function NavbarSidebar() {
   if (!isMobile) return null;
 
   return (
-    <Sidebar className="fixed left-0 top-0 h-screen md:hidden overflow-hidden">
+    <Sidebar className="fixed left-0 top-0 h-screen md:hidden overflow-hidden border-r border-white/20 bg-white/10 backdrop-blur-lg dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10">
+      <SidebarHeader className="pt-8 pl-6">
+        <Link
+          href="/"
+          className="cursor-target text-lg font-bold text-foreground"
+        >
+          Rasidin
+        </Link>
+      </SidebarHeader>
       <SidebarContent className="overflow-hidden">
-        <SidebarMenu>
+        <SidebarMenu className="pt-2 pl-5">
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
               <SidebarMenuButton asChild>
