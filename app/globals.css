@@ -142,6 +142,7 @@
 
 body {
   @apply overscroll-none bg-transparent;
+  contain: layout style;
 }
 
 body::before {
@@ -161,6 +162,7 @@ body::before {
     rgba(99, 102, 241, 0.08) 100%);
   pointer-events: none;
   z-index: 1;
+  will-change: auto;
 }
 
 .dark body::before {

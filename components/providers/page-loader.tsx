@@ -7,8 +7,19 @@ import Image from "next/image";
 export default function PageLoader() {
   const [isVisible, setIsVisible] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [shouldShow, setShouldShow] = useState(true);
 
   useEffect(() => {
+    // Check if user has visited before
+    const hasVisited = localStorage.getItem("hasVisitedBefore");
+    if (hasVisited) {
+      setShouldShow(false);
+      return;
+    }
+
+    // Mark as visited
+    localStorage.setItem("hasVisitedBefore", "true");
+
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 2000);
@@ -26,7 +37,7 @@ export default function PageLoader() {
     };
   }, []);
 
-  if (!isVisible) return null;
+  if (!shouldShow || !isVisible) return null;
 
   return (
     <motion.div
@@ -47,6 +58,7 @@ export default function PageLoader() {
             height={150}
             priority
             unoptimized
+            loading="eager"
           />
         </motion.div>
 

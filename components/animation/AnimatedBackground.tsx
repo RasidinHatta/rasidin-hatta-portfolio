@@ -7,13 +7,29 @@ import LightPillar from "../react-bits/LightPillar";
 export default function AnimatedBackground() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+  }, []);
+
   if (!mounted) return <div className="absolute inset-0 bg-background" />;
 
   const isDark = resolvedTheme === "dark";
 
-  const pillarProps = {
+  // Reduce animation intensity if user prefers reduced motion
+  const pillarProps = prefersReducedMotion ? {
+    intensity: 0.4,
+    rotationSpeed: 0.3,
+    glowAmount: 0.003,
+    pillarWidth: 4.5,
+    pillarHeight: 0.35,
+    noiseIntensity: 0.3,
+    pillarRotation: 30,
+  } : {
     intensity: 0.8,
     rotationSpeed: 0.6,
     glowAmount: 0.006,
@@ -31,7 +47,7 @@ export default function AnimatedBackground() {
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: prefersReducedMotion ? 0.3 : 0.8, ease: "easeInOut" }}
           className={`absolute inset-0 h-full w-full ${
             isDark ? "bg-[#040103]" : "bg-[#9575c7]"
           }`}
