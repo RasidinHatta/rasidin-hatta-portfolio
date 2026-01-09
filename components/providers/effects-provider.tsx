@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState } from "react";
 import AnimatedBackground from "../animation/AnimatedBackground";
 import TargetCursor from "../react-bits/TargetCursor";
+import SettingsPrompt from "./settings-prompt";
 
 interface EffectsContextType {
   isBackgroundEnabled: boolean;
@@ -31,6 +32,7 @@ export function EffectsProvider({ children }: { children: React.ReactNode }) {
     >
       {isBackgroundEnabled && <AnimatedBackground />}
       {isCursorEnabled && <TargetCursor />}
+      {!isBackgroundEnabled && !isCursorEnabled && <SettingsPrompt />}
       {children}
     </EffectsContext.Provider>
   );

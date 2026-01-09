@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/themes/theme-provider";
 import { Navbar } from "@/components/navigation/Navbar";
 import { EffectsProvider } from "@/components/providers/effects-provider";
+import PageLoader from "@/components/providers/page-loader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +38,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <EffectsProvider>
+            <PageLoader />
             <div className="relative z-10 flex min-h-screen flex-col">
               <Navbar />
-              <main className="flex-1 w-full">{children}</main>
+              <main className="flex-1 w-full relative z-10">{children}</main>
             </div>
           </EffectsProvider>
         </ThemeProvider>
