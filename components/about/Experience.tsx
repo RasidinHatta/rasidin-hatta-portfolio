@@ -112,7 +112,7 @@ const Experience = () => {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                        <ChevronDown className="cursor-target w-5 h-5 text-muted-foreground" />
                       </motion.div>
                     </div>
 
@@ -154,7 +154,7 @@ const Experience = () => {
                               <Link
                                 href={exp.githubUrl}
                                 target="_blank"
-                                className="text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
+                                className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
                               >
                                 GITHUB <FaGithub />
                               </Link>
@@ -172,7 +172,7 @@ const Experience = () => {
                               <Link
                                 href={exp.liveUrl}
                                 target="_blank"
-                                className="text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
+                                className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
                               >
                                 WEBSITE <CgWebsite />
                               </Link>

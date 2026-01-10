@@ -32,7 +32,7 @@ export default function ContactPage() {
           {/* Contact Info & Map */}
           <div className="space-y-8">
             <ContactInformation />
-            <SocialLinks />
+            {/* <SocialLinks /> */}
             <LocationMap />
           </div>
         </div>

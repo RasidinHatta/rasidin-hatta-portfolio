@@ -109,7 +109,7 @@ const ContactForm = () => {
                         <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                            className="cursor-target w-full rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
                         >
                             {isSubmitting ? (
                                 "Sending..."
@@ -132,7 +132,7 @@ const ContactForm = () => {
                                 asChild
                                 variant="outline"
                                 size="lg"
-                                className="rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-md"
+                                className="cursor-target rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-md"
                             >
                                 <Link href={contactInfo.github} target="_blank" rel="noopener noreferrer">
                                     <GithubIcon className="mr-2 w-5 h-5" />
@@ -144,7 +144,7 @@ const ContactForm = () => {
                             <Button
                                 asChild
                                 size="lg"
-                                className="rounded-full px-6 bg-primary hover:bg-primary/90 text-background transition-all duration-300 hover:scale-105 hover:shadow-md"
+                                className="cursor-target rounded-full px-6 bg-primary hover:bg-primary/90 text-background transition-all duration-300 hover:scale-105 hover:shadow-md"
                             >
                                 <Link href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">
                                     <LinkedinIcon className="mr-2 w-5 h-5" />

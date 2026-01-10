@@ -81,7 +81,7 @@ const Introduction = () => {
               whileHover={{ scale: 1.05 }}
               className="cursor-pointer"
             >
-              <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-background shadow-lg hover:shadow-xl transition-shadow">
+              <Avatar className="cursor-target w-32 h-32 md:w-40 md:h-40 border-4 border-background shadow-lg hover:shadow-xl transition-shadow">
                 <AvatarImage
                   src={personalInfo.avatar}
                   alt={personalInfo.name}
@@ -171,7 +171,7 @@ const Introduction = () => {
               >
                 <Button
                   onClick={handleContact}
-                  className="w-full sm:w-auto text-background rounded-full px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="cursor-target w-full sm:w-auto text-background rounded-full px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   Get In Touch
                   <ChevronRight className="ml-2 w-4 h-4" />
@@ -183,7 +183,7 @@ const Introduction = () => {
                   disabled={isDownloading}
                   variant="outline"
                   size="lg"
-                  className="rounded-full px-8 transition-all duration-300 hover:scale-105 hover:bg-foreground hover:text-primary bg-accent text-foreground w-full sm:w-auto"
+                  className="cursor-target rounded-full px-8 transition-all duration-300 hover:scale-105 hover:bg-foreground hover:text-primary bg-accent text-foreground w-full sm:w-auto"
                 >
                   {isDownloading ? (
                     <>
@@ -203,7 +203,7 @@ const Introduction = () => {
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="rounded-full px-8 w-full sm:w-auto"
+                  className="cursor-target rounded-full px-8 w-full sm:w-auto"
                 >
                   <a
                     href={personalInfo.resumeUrl}
@@ -234,7 +234,7 @@ const Introduction = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 inline-block"
+                      className="cursor-target p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 inline-block"
                     >
                       <social.icon className="w-5 h-5" />
                     </Link>
