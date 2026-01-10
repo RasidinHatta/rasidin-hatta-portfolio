@@ -7,6 +7,7 @@ import { EffectsProvider } from "@/components/providers/effects-provider";
 import PageLoader from "@/components/providers/page-loader";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default function RootLayout({
               <div className="relative z-10 flex min-h-screen flex-col w-full">
                 <Navbar />
                 <main className="flex-1 w-full relative z-10">
+                  <Toaster/>
                   {children}
                   <SpeedInsights />
                 </main>

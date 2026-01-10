@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
 import Link from "next/link"
+import { sendContactEmail } from "@/lib/mail"
 
 type ContactFormData = z.infer<typeof contactSchema>
 
@@ -27,14 +28,18 @@ const ContactForm = () => {
     })
 
     const onSubmit = async (data: ContactFormData) => {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500))
+        const result = await sendContactEmail(data)
 
-        toast.success("Message Sent!", {
-            description: "Thank you for reaching out. I'll get back to you soon.",
-        })
-
-        reset()
+        if (result.success) {
+            toast.success("Message Sent!", {
+                description: "Thank you for reaching out. I'll get back to you soon.",
+            })
+            reset()
+        } else {
+            toast.error("Error Sending Message", {
+                description: result.message
+            })
+        }
     }
     return (
         <motion.div
