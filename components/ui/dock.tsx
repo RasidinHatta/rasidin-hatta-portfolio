@@ -90,7 +90,10 @@ function DockItem({
       onBlur={() => isHovered.set(0)}
       onClick={onClick}
       className={cn(
-        "relative inline-flex items-center justify-center rounded-full bg-background border-border border-2 shadow-md",
+        "relative inline-flex items-center justify-center rounded-full shadow-md transition-colors duration-200",
+        "bg-white/10 border border-white/20 backdrop-blur-md", // Light mode glass
+        "dark:bg-black/20 dark:border-white/10", // Dark mode glass
+        "hover:bg-white/30 dark:hover:bg-white/10", // Hover states
         className
       )}
       tabIndex={0}

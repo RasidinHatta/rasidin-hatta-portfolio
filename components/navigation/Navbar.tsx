@@ -28,21 +28,29 @@ export const Navbar = () => {
       icon: <Home className="size-full" />,
       label: "Home",
       onClick: () => router.push("/"),
+      className:
+        "hover:bg-blue-100/50 dark:hover:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-transparent hover:border-blue-500/20",
     },
     {
       icon: <User className="size-full" />,
       label: "About",
       onClick: () => router.push("/about"),
+      className:
+        "hover:bg-purple-100/50 dark:hover:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-transparent hover:border-purple-500/20",
     },
     {
       icon: <Briefcase className="size-full" />,
       label: "Projects",
       onClick: () => router.push("/projects"),
+      className:
+        "hover:bg-pink-100/50 dark:hover:bg-pink-900/30 text-pink-600 dark:text-pink-400 border-transparent hover:border-pink-500/20",
     },
     {
       icon: <Mail className="size-full" />,
       label: "Contact",
       onClick: () => router.push("/contact"),
+      className:
+        "hover:bg-orange-100/50 dark:hover:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-transparent hover:border-orange-500/20",
     },
   ];
 

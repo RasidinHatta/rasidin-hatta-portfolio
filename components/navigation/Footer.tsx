@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import {
@@ -33,7 +34,12 @@ export function Footer() {
   ];
 
   return (
-    <footer className="w-full border-t border-white/10 bg-black/20 backdrop-blur-lg pt-12 pb-24 md:pb-32 z-40 relative">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+      className="w-full border-t border-border/40 bg-background/20 backdrop-blur-md pt-12 pb-24 md:pb-32 z-40 relative"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
@@ -78,7 +84,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-all hover:scale-110 p-2 rounded-full hover:bg-white/5 border border-transparent hover:border-white/10"
+                  className="text-muted-foreground hover:text-foreground transition-all hover:scale-110 p-2 rounded-full hover:bg-accent border border-transparent hover:border-border"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -88,7 +94,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+        <div className="border-t border-border pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {currentYear} Rasidin Hatta. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="text-muted-foreground/80">Built with:</span>
@@ -142,6 +148,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
