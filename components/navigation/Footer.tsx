@@ -3,14 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiShadcnui,
-  SiFramer,
-  SiReact,
-} from "react-icons/si";
+import { SiNextdotjs, SiTailwindcss, SiShadcnui } from "react-icons/si";
 import { navItems } from "@/data/navigation";
+import ReactBit from "../logos/ReactBit";
+import Motion from "../logos/Motion";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -130,19 +126,19 @@ export function Footer() {
                 href="https://www.framer.com/motion/"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-pink-500 transition-colors"
+                className="hover:text-[#FFF312] transition-colors"
                 title="Framer Motion"
               >
-                <SiFramer className="h-5 w-5" />
+                <Motion className="h-5 w-5" />
               </a>
               <a
                 href="https://reactbits.dev"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-cyan-400 transition-colors"
+                className="hover:text-purple-500 transition-colors"
                 title="React Bits"
               >
-                <SiReact className="h-5 w-5" />
+                <ReactBit className="h-5 w-5" />
               </a>
             </div>
           </div>
