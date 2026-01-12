@@ -1,12 +1,9 @@
 "use client";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Home, User, Briefcase, Mail } from "lucide-react";
+import Dock from "@/components/ui/dock";
 import { navItems } from "@/data/navigation";
 import { SettingsMenu } from "../themes/settings-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -23,6 +20,31 @@ import {
 // Navbar Component
 export const Navbar = () => {
   const isMobile = useIsMobile();
+
+  const router = useRouter();
+
+  const items = [
+    {
+      icon: <Home className="size-full" />,
+      label: "Home",
+      onClick: () => router.push("/"),
+    },
+    {
+      icon: <User className="size-full" />,
+      label: "About",
+      onClick: () => router.push("/about"),
+    },
+    {
+      icon: <Briefcase className="size-full" />,
+      label: "Projects",
+      onClick: () => router.push("/projects"),
+    },
+    {
+      icon: <Mail className="size-full" />,
+      label: "Contact",
+      onClick: () => router.push("/contact"),
+    },
+  ];
 
   if (isMobile) {
     return (
@@ -62,22 +84,15 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="border border-white/20 bg-white/10 backdrop-blur-lg rounded-full px-6 py-2 dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10">
-            <NavigationMenuList className="flex items-center space-x-6">
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.href}
-                      className="cursor-target font-medium text-sm text-foreground relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full hover:text-primary"
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+            <Dock
+              items={items}
+              panelHeight={68}
+              baseItemSize={50}
+              magnification={70}
+              className="border-white/20 bg-white/10 backdrop-blur-lg rounded-full dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10"
+            />
+          </div>
 
           <div className="flex items-center space-x-2">
             <SettingsMenu />
