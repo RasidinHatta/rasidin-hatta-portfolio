@@ -79,7 +79,7 @@ export const projects: Experience[] = [
     longDescription: undefined,
     team: undefined,
     features: undefined,
-    githubUrl: "https://github.com/RasidinHatta/scribd-clone",
+    githubUrl: "https://github.com/RasidinHatta/study-archive-management-system",
     liveUrl: "https://study-archive-management-system.vercel.app"
   },
   {
