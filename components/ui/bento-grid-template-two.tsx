@@ -19,6 +19,7 @@ export type BentoItem = {
   variant?: "default" | "highlight" | "glass" | "solid";
   tag?: string;
   priority?: number;
+  imageClassName?: string;
 };
 
 export type BentoGridProps = {
@@ -86,6 +87,7 @@ function BentoGridItem({ item }: { item: BentoItem }) {
     accentColor,
     variant = "default",
     tag,
+    imageClassName,
   } = item;
 
   const hasImage = Boolean(image);
@@ -137,7 +139,10 @@ function BentoGridItem({ item }: { item: BentoItem }) {
             src={image}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className={cn(
+              "object-cover transition-transform duration-500 group-hover:scale-105",
+              imageClassName
+            )}
           />
           <div className="absolute inset-0 bg-black/25" />
         </div>

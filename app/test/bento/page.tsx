@@ -19,6 +19,7 @@ const sampleBentoData: BentoItem[] = [
     tag: "Featured",
     accentColor: "#FFFFFF",
     link: "#design",
+    imageClassName: "object-contain",
   },
   {
     id: "2",
