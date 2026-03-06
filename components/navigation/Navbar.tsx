@@ -16,6 +16,7 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { DesktopSidebar } from "@/components/navigation/sidebar/DesktopSidebarNav";
 
 // Navbar Component
 export const Navbar = () => {
@@ -77,37 +78,17 @@ export const Navbar = () => {
     );
   }
 
+  // Desktop: fixed left sidebar handles navigation
   return (
-    <header className="sticky top-0 z-50 w-full pt-4 transition-colors duration-500 hidden md:block">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="shrink-0">
-            <Link
-              href="/"
-              className="cursor-target text-xl font-bold text-foreground"
-            >
-              Rasidin
-            </Link>
-          </div>
+    <>
+      {/* Fixed left desktop sidebar */}
+      <DesktopSidebar />
 
-          {/* Desktop Navigation */}
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-            <Dock
-              items={items}
-              panelHeight={68}
-              baseItemSize={50}
-              magnification={70}
-              className="border-white/20 bg-white/10 backdrop-blur-lg rounded-full dark:border-white/10 dark:bg-white/5 supports-backdrop-filter:bg-white/10"
-            />
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <SettingsMenu />
-          </div>
-        </div>
-      </div>
-    </header>
+      {/* Top-right settings strip — desktop only */}
+      <header className="fixed top-4 right-4 z-50 hidden md:flex items-center gap-2">
+        <SettingsMenu />
+      </header>
+    </>
   );
 };
 

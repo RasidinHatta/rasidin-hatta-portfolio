@@ -34,7 +34,7 @@ export function Footer() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      className="w-full border-t border-border/40 bg-background/20 backdrop-blur-md pt-12 pb-24 md:pb-32 z-40 relative"
+      className="w-full border-t border-border/40 bg-background/20 backdrop-blur-md pt-12 pb-24 md:pb-32 z-10 relative md:pl-[60px]"
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
