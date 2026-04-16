@@ -74,13 +74,21 @@ const ProjectsJourney = () => {
                       className={`flex items-center justify-between gap-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
                         }`}
                     >
-                      <div>
-                        <h3
-                          className={`text-xl font-bold mb-1 text-foreground ${index % 2 === 0 ? "md:text-right" : ""
-                            }`}
-                        >
-                          {project.title}
-                        </h3>
+                      <div className={`flex flex-col ${index % 2 === 0 ? "md:items-end" : ""}`}>
+                        <div className={`flex items-center gap-2 mb-1 ${index % 2 === 0 ? "md:justify-end flex-row-reverse" : ""}`}>
+                          <h3 className="text-xl font-bold text-foreground">
+                            {project.title}
+                          </h3>
+                          {project.status && (
+                             <span className={`px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-md border ${
+                                project.status === 'active' ? 'bg-green-100/50 border-green-200 text-green-700 dark:bg-green-500/10 dark:border-green-500/20 dark:text-green-400' :
+                                project.status === 'completed' ? 'bg-blue-100/50 border-blue-200 text-blue-700 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-400' :
+                                'bg-neutral-100/50 border-neutral-200 text-neutral-600 dark:bg-neutral-500/10 dark:border-neutral-500/20 dark:text-neutral-400'
+                             }`}>
+                                {project.status}
+                             </span>
+                          )}
+                        </div>
 
                         <p
                           className={`text-primary font-medium mb-1 ${index % 2 === 0 ? "md:text-right" : ""
@@ -153,14 +161,23 @@ const ProjectsJourney = () => {
                               className={`text-foreground mb-4 ${index % 2 === 0 ? "md:text-right" : ""
                                 }`}
                             >
-                              <Link
-                                href={project.liveUrl}
-                                target="_blank"
-                                onClick={(e) => e.stopPropagation()}
-                                className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
-                              >
-                                WEBSITE <CgWebsite />
-                              </Link>
+                              {project.status === "inactive" ? (
+                                <span
+                                  className="text-muted-foreground inline-flex items-center gap-1 opacity-70 cursor-not-allowed"
+                                  title="Website is currently inactive"
+                                >
+                                  WEBSITE <CgWebsite /> (Offline)
+                                </span>
+                              ) : (
+                                <Link
+                                  href={project.liveUrl}
+                                  target="_blank"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
+                                >
+                                  WEBSITE <CgWebsite />
+                                </Link>
+                              )}
                             </motion.p>
                           )}
 

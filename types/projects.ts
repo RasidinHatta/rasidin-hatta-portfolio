@@ -11,4 +11,5 @@ export interface Project {
     period: string;
     team: string;
     type: 'academic' | 'personal' | 'professional';
+    status?: 'active' | 'inactive' | 'completed' | 'ongoing';
 }

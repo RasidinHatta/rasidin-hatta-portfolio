@@ -21,7 +21,8 @@ export const projects: Project[] = [
         liveUrl: "https://study-archive-management-system.vercel.app",
         period: "Mar 2024 - Sept 2025",
         team: "Final Year Project",
-        type: "academic"
+        type: "academic",
+        status: "completed"
     },
     {
         id: 2,
@@ -42,7 +43,8 @@ export const projects: Project[] = [
         liveUrl: "https://finance-tracker-better-auth.vercel.app",
         period: "Feb 2026 - Mar 2026",
         team: "Open Source Project",
-        type: "personal"
+        type: "personal",
+        status: "active"
     },
     {
         id: 3,
@@ -63,7 +65,8 @@ export const projects: Project[] = [
         liveUrl: "https://crunchy-code.herokuapp.com",
         period: "Nov 2023 - Dec 2023",
         team: "IEEE Computer Society (5 members)",
-        type: "academic"
+        type: "academic",
+        status: "inactive"
     },
     {
         id: 4,
@@ -84,6 +87,7 @@ export const projects: Project[] = [
         liveUrl: "https://mpl-tracker.vercel.app",
         period: "Apr 2026 - Present",
         team: "Solo Project",
-        type: "personal"
+        type: "personal",
+        status: "inactive"
     }
 ];
