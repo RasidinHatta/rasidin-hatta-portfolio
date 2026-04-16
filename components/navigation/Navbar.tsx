@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Home, User, Briefcase, Mail } from "lucide-react";
+import { Home, User, Briefcase, Mail, Sword } from "lucide-react";
 import Dock from "@/components/ui/dock";
 import { navItems } from "@/data/navigation";
 import { SettingsMenu } from "../themes/settings-menu";
@@ -63,9 +63,14 @@ export const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="cursor-target text-lg font-bold text-foreground"
+              className="cursor-target flex items-center gap-2.5 group"
             >
-              Rasidin
+              <div className="flex bg-primary text-primary-foreground p-1.5 rounded-md group-hover:bg-primary/90 transition-colors shrink-0">
+                <Sword className="size-5" />
+              </div>
+              <span className="text-xl font-black tracking-tight text-foreground whitespace-nowrap">
+                Rasidin<span className="text-primary tracking-normal font-medium">Hatta</span>
+              </span>
             </Link>
 
             <div className="flex items-center gap-2">
@@ -103,9 +108,14 @@ export function NavbarSidebar() {
       <SidebarHeader className="pt-8 pl-6">
         <Link
           href="/"
-          className="cursor-target text-lg font-bold text-foreground"
+          className="cursor-target flex items-center gap-2.5 group"
         >
-          Rasidin
+          <div className="flex bg-primary text-primary-foreground p-1.5 rounded-md group-hover:bg-primary/90 transition-colors shrink-0">
+            <Sword className="size-5" />
+          </div>
+          <span className="text-xl font-black tracking-tight text-foreground whitespace-nowrap">
+            Rasidin<span className="text-primary tracking-normal font-medium">Hatta</span>
+          </span>
         </Link>
       </SidebarHeader>
       <SidebarContent className="overflow-hidden">
