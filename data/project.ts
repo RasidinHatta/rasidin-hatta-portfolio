@@ -7,7 +7,7 @@ export const projects: Project[] = [
         title: "Study Archive Management System",
         description: "Document Management System using Waterfall methodology, featuring Authentication, RBAC, Content Preference, and Collaboration",
         longDescription: "Developed as a Final Year Project, this document management system enhances student study experience by providing secure document sharing features. The system implements comprehensive security measures including HTTPS, Two Factor Authentication (2FA), JSON Web Tokens (JWT), Role Based Access Control (RBAC), and secure authentication mechanisms with client/server actions.",
-        image: "/sams.png",
+        image: "/projects/sams.png",
         tech: ["NextJS", "TailwindCSS", "Prisma", "AuthJS", "PostgreSQL", "Vercel"],
         features: [
             "Document Management System with Waterfall methodology",
@@ -29,7 +29,7 @@ export const projects: Project[] = [
         title: "Finance Tracker",
         description: "Personal Finance Management System using Waterfall methodology, featuring Authentication, RBAC, Content Preference, and Collaboration",
         longDescription: "Developed as a Open Source Project, this personal finance management system enhances user's financial management by providing secure document sharing features. The system implements comprehensive security measures including HTTPS, Two Factor Authentication (2FA), JSON Web Tokens (JWT), Role Based Access Control (RBAC), and secure authentication mechanisms with client/server actions.",
-        image: "/sams.png",
+        image: "/projects/finance-tracker.png",
         tech: ["NextJS", "TailwindCSS", "Prisma", "BetterAuth", "PostgreSQL", "Vercel"],
         features: [
             "Personal Finance Management System with Waterfall methodology",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
         title: "Learning Management System (Crunchy Code)",
         description: "Web-based platform aimed at introducing secondary school students to the basics of computer science using Agile methodology",
         longDescription: "An IEEE Computer Society project developed in a 5-person team. The platform, named 'Crunchy Code', focuses on making coding enjoyable and interactive for secondary school students. The project emphasizes fun, challenging, and rewarding learning experiences while introducing fundamental computer science concepts.",
-        image: "/sams.png",
+        image: "",
         tech: ["Laravel", "Composer", "PHPMyAdmin", "Heroku", "Agile Methodology"],
         features: [
             "Web-based learning platform for computer science basics",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
         title: "MPL Tracker",
         description: "Web based tracking system for tracking MPL",
         longDescription: "An IEEE Computer Society project developed in a 5-person team. The platform, named 'Crunchy Code', focuses on making coding enjoyable and interactive for secondary school students. The project emphasizes fun, challenging, and rewarding learning experiences while introducing fundamental computer science concepts.",
-        image: "/sams.png",
+        image: "/projects/mpl-tracker.png",
         tech: ["NextJS", "TailwindCSS", "Prisma", "BetterAuth", "PostgreSQL", "Vercel"],
         features: [
             "Web-based learning platform for computer science basics",

@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import {
   Calendar,
   Award,
@@ -58,7 +59,17 @@ const ProjectsJourney = () => {
                 }
                 whileHover={{ scale: 1.02 }}
               >
-                <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] cursor-pointer">
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] cursor-pointer overflow-hidden">
+                  {project.image && (
+                    <div className="relative w-full h-48 sm:h-56 bg-muted">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  )}
                   <CardContent className="p-6">
                     <div
                       className={`flex items-center gap-2 mb-2 ${index % 2 === 0 ? "md:justify-end" : ""
