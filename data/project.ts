@@ -84,7 +84,7 @@ export const projects: Project[] = [
             "Focus on making coding enjoyable and interactive"
         ],
         githubUrl: "https://github.com/RasidinHatta/mpl-tracker",
-        liveUrl: "https://mpl-tracker.vercel.app",
+        liveUrl: "https://mpl-tracker-taupe.vercel.app",
         period: "Apr 2026 - Present",
         team: "Solo Project",
         type: "personal",
