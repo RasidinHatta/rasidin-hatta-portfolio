@@ -88,6 +88,6 @@ export const projects: Project[] = [
         period: "Apr 2026 - Present",
         team: "Solo Project",
         type: "personal",
-        status: "inactive"
+        status: "active"
     }
 ];
