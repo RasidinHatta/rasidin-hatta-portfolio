@@ -7,9 +7,10 @@ import {
   Award,
   Code,
   ChevronDown,
-  Users
+  Users,
+  Download
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { projects } from "@/data/project";
 import { Project } from "@/types/projects";
@@ -189,6 +190,25 @@ const ProjectsJourney = () => {
                                   WEBSITE <CgWebsite />
                                 </Link>
                               )}
+                            </motion.p>
+                          )}
+
+                          {project.downloadUrl && (
+                            <motion.p
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.18 }}
+                              className={`text-foreground mb-4 ${index % 2 === 0 ? "md:text-right" : ""
+                                }`}
+                            >
+                              <Link
+                                href={project.downloadUrl}
+                                download
+                                onClick={(e) => e.stopPropagation()}
+                                className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
+                              >
+                                DOWNLOAD <Download className="w-4 h-4" />
+                              </Link>
                             </motion.p>
                           )}
 

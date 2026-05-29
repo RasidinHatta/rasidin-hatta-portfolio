@@ -7,7 +7,6 @@ import { Footer } from "@/components/navigation/Footer";
 import { EffectsProvider } from "@/components/providers/effects-provider";
 import PageLoader from "@/components/providers/page-loader";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 
 const geistSans = Geist({
@@ -56,7 +55,6 @@ export default function RootLayout({
                 <main className="flex-1 w-full relative z-10 min-h-screen">
                   <Toaster />
                   {children}
-                  <SpeedInsights />
                 </main>
                 <Footer />
               </div>

@@ -9,10 +9,17 @@ import {
     useAceSidebar,
 } from "@/components/ui/sidebar";
 import { motion } from "motion/react";
-import SidebarIcon from "./SidebarIcon";
+import { BriefcaseBusiness, House, Mail, UserRound } from "lucide-react";
 import DesktopSidebarLogo from "./DesktopSidebarLogo";
 import { portfolioSidebarLinks } from "./linkList";
 import { SettingsMenu } from "@/components/themes/settings-menu";
+
+const menuIcons = {
+    "/": House,
+    "/about": UserRound,
+    "/projects": BriefcaseBusiness,
+    "/contact": Mail,
+};
 
 // Inner bottom bar — mirrors AceSidebarLink layout exactly
 function SidebarBottomBar() {
@@ -40,13 +47,12 @@ export function DesktopSidebar() {
 
     const links = portfolioSidebarLinks.map((link) => ({
         ...link,
-        icon: (
-            <SidebarIcon
-                src={link.icon}
-                alt={link.label}
-                className="h-5 w-5 shrink-0 opacity-60 group-hover/sidebar:opacity-100 transition-opacity duration-150"
-            />
-        ),
+        icon: (() => {
+            const Icon = menuIcons[link.href as keyof typeof menuIcons];
+            return (
+                <Icon className="h-5 w-5 shrink-0 text-muted-foreground transition-colors duration-150 group-hover/sidebar:text-primary" />
+            );
+        })(),
     }));
 
     const handleNav = (
@@ -76,8 +82,8 @@ export function DesktopSidebar() {
                                         link={link}
                                         onClick={(e) => handleNav(e, link.href)}
                                         className={`border-r-4 border-r-transparent transition-colors duration-200 rounded-r-md ${isActive
-                                            ? "pl-2 bg-white/20 dark:bg-white/10 border-l-4 border-l-foreground [&_img]:opacity-100"
-                                            : "ml-2 pl-2 hover:bg-white/10 dark:hover:bg-white/5 [&_img]:opacity-40 hover:[&_img]:opacity-70"
+                                            ? "pl-2 bg-primary/12 border-l-4 border-l-primary [&_svg]:text-primary"
+                                            : "ml-2 pl-2 hover:bg-primary/8 dark:hover:bg-primary/10"
                                             }`}
                                     />
                                 );

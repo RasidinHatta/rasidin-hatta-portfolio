@@ -10,7 +10,7 @@ import {
   Code,
   ChevronDown,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { experiences, projects } from "@/data/about";
 import { Experience as ExperienceType } from "@/types/experience";

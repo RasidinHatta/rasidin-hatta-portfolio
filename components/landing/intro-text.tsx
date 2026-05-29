@@ -1,10 +1,9 @@
 import React from "react";
-import Image from "next/image";
 import { AnimatedGroup } from "../animation/AnimatedGroup";
 import { AnimatedText } from "../animation/AnimatedText";
 import { TypingText } from "../ui/typing-text";
 import { Button } from "../ui/button";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 import Description from "./desctiption";
 
@@ -36,38 +35,26 @@ const IntroText = ({
       preset="blur-slide"
       className="mx-auto flex flex-col items-start text-left md:mx-auto md:items-center md:text-center lg:max-w-3xl lg:items-start lg:text-left"
     >
-      {/* Heading with animated role */}
       <AnimatedText
         as="h1"
-        className="text-2xl font-bold text-pretty whitespace-pre-line lg:text-4xl xl:text-5xl leading-tight text-foreground"
+        className="max-w-3xl text-pretty text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl"
       >
-        {/* Static Name */}
-        <span className="block">{`I'm ${heading}`}</span>
+        <span className="block">{`I'm ${heading}.`}</span>
 
-        {/* Animated Role */}
-        <span className="inline-flex items-baseline gap-2">
-          a
-          <span className="min-w-[18ch] inline-flex justify-start">
+        <span className="mt-2 inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <span className="text-muted-foreground">I build as a</span>
+          <span className="inline-flex min-w-[18ch] justify-start text-primary">
             <TypingText
-              texts={["Full Stack Developer", "Network Engineer"]}
-              className="font-bold text-2xl lg:text-4xl xl:text-5xl whitespace-nowrap inline-flex items-baseline"
+              texts={["Full Stack Developer", "Automation Builder"]}
+              className="inline-flex whitespace-nowrap font-semibold"
               speed={70}
               deleteSpeed={70}
               pauseDuration={2000}
               loop={true}
               showCursor={true}
               blinkingCursor={false}
-              cursor={(isDeleting) => (
-                <Image
-                  src="/rainbow-cat.gif"
-                  alt="cursor"
-                  width={35}
-                  height={35}
-                  unoptimized
-                  className={`inline-block -translate-y-1 transition-transform duration-200 ${
-                    isDeleting ? "scale-x-[-1]" : ""
-                  }`}
-                />
+              cursor={() => (
+                <span className="ml-1 inline-block h-[0.9em] w-1 translate-y-1 rounded-full bg-primary" />
               )}
               cursorClassName=""
             />
@@ -78,13 +65,12 @@ const IntroText = ({
       {/* Description */}
       <AnimatedText
         as="p"
-        className="text-sm sm:text-base lg:text-xl text-foreground/70 mb-8 max-w-lg font-bold"
+        className="mb-8 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base lg:text-lg"
         delay={0.12}
       >
         {description}
       </AnimatedText>
 
-      {/* Buttons */}
       <AnimatedGroup
         preset="slide"
         className="flex flex-col gap-2 sm:flex-row lg:justify-start"
@@ -92,9 +78,12 @@ const IntroText = ({
         {buttons.primary && (
           <Button
             asChild
-            className="cursor-target w-full sm:w-auto text-background rounded-full px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            className="cursor-target w-full rounded-md px-6 sm:w-auto"
           >
-            <Link href={buttons.primary.url}>{buttons.primary.text}</Link>
+            <Link href={buttons.primary.url}>
+              {buttons.primary.text}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
         )}
         {buttons.secondary && (
@@ -102,11 +91,11 @@ const IntroText = ({
             asChild
             variant="outline"
             size="lg"
-            className="cursor-target rounded-full px-8 transition-all duration-300 hover:scale-105 hover:bg-foreground hover:text-primary bg-accent text-foreground"
+            className="cursor-target rounded-md bg-background/80 px-6"
           >
             <Link href={buttons.secondary.url}>
+              <Mail className="mr-2 h-4 w-4" />
               {buttons.secondary.text}
-              <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </Button>
         )}

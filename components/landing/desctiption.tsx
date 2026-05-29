@@ -1,23 +1,23 @@
-import React from 'react'
-import { SiNextdotjs, SiReact } from 'react-icons/si'
+import React from "react";
+import { SiNextdotjs, SiReact } from "react-icons/si";
 
 const Description = () => {
-    return (
-        <>
-            Designing and developing modern web applications with{" "}
-            <span className="inline-flex items-center gap-1 text-background dark:text-primary font-semibold">
-                <SiReact className="w-5 h-5 text-sky-400" />
-                React
-            </span>{" "}
-            and{" "}
-            <span className="inline-flex items-center gap-1 text-background dark:text-primary font-semibold">
-                <SiNextdotjs className="w-5 h-5 text-foreground" />
-                NextJS
-            </span>
-            , focusing on performance,&nbsp; scalability, and seamless user experience
-            through interactive UI and secure backend integration.
-        </>
-    )
-}
+  return (
+    <>
+      Designing practical systems with{" "}
+      <span className="inline-flex items-center gap-1 font-semibold text-foreground">
+        <SiReact className="h-4 w-4 text-sky-500" />
+        React
+      </span>{" "}
+      and{" "}
+      <span className="inline-flex items-center gap-1 font-semibold text-foreground">
+        <SiNextdotjs className="h-4 w-4 text-foreground" />
+        Next.js
+      </span>
+      , with strong focus on SQL workflows, secure integration, reporting, and
+      responsive user experience.
+    </>
+  );
+};
 
-export default Description
+export default Description;

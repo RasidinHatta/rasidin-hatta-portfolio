@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Sword } from "lucide-react";
+import Image from "next/image";
 
 interface DesktopSidebarLogoProps {
     open: boolean;
@@ -15,8 +15,15 @@ const DesktopSidebarLogo = ({ open }: DesktopSidebarLogoProps) => {
                     className="flex items-center gap-2.5 cursor-target group"
                 >
                     {/* Icon mark — always visible */}
-                    <div className="flex bg-primary text-primary-foreground p-1.5 rounded-md group-hover:bg-primary/90 transition-colors shrink-0">
-                        <Sword className="size-5" />
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary p-1.5 transition-colors group-hover:bg-primary/90">
+                        <Image
+                            src="/rainbow-cat.gif"
+                            alt="Rasidin Hatta"
+                            width={28}
+                            height={28}
+                            unoptimized
+                            className="h-7 w-7 object-contain"
+                        />
                     </div>
 
                     {/* Full name — animate in/out with sidebar */}

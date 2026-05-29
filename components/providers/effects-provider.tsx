@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import AnimatedBackground from "../animation/AnimatedBackground";
 import TargetCursor from "../react-bits/TargetCursor";
 
 interface EffectsContextType {
@@ -23,7 +22,6 @@ export function EffectsProvider({ children }: { children: React.ReactNode }) {
         toggleCursor,
       }}
     >
-      <AnimatedBackground />
       {isCursorEnabled && <TargetCursor />}
       {children}
     </EffectsContext.Provider>

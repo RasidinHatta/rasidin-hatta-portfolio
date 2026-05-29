@@ -8,6 +8,7 @@ export interface Project {
     features: string[];
     githubUrl?: string;
     liveUrl?: string;
+    downloadUrl?: string;
     period: string;
     team: string;
     type: 'academic' | 'personal' | 'professional';

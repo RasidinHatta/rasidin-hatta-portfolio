@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -10,14 +10,12 @@ export default function PageLoader() {
   const [shouldShow, setShouldShow] = useState(true);
 
   useEffect(() => {
-    // Check if user has visited before
     const hasVisited = localStorage.getItem("hasVisitedBefore");
     if (hasVisited) {
       setShouldShow(false);
       return;
     }
 
-    // Mark as visited
     localStorage.setItem("hasVisitedBefore", "true");
 
     const timer = setTimeout(() => {
@@ -47,32 +45,30 @@ export default function PageLoader() {
       transition={{ duration: 0.5, delay: 1.8 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-background"
     >
-      <div className="flex flex-col items-center justify-center gap-8 w-full px-8">
-        <motion.div
-          className="flex justify-center"
-        >
+      <div className="flex w-full flex-col items-center justify-center gap-7 px-8">
+        <motion.div className="flex justify-center rounded-lg border border-primary/25 bg-card/90 p-3 shadow-sm">
           <Image
             src="/rainbow-cat.gif"
             alt="Loading"
-            width={150}
-            height={150}
+            width={128}
+            height={128}
             priority
             unoptimized
             loading="eager"
           />
         </motion.div>
 
-        <div className="flex flex-col items-center gap-3 w-full max-w-xs">
+        <div className="flex w-full max-w-xs flex-col items-center gap-3">
           <motion.p
-            className="text-lg font-semibold text-foreground"
+            className="text-sm font-semibold uppercase tracking-wide text-muted-foreground"
             animate={{ opacity: [0.7, 1] }}
             transition={{ duration: 0.5 }}
           >
-            {Math.round(progress)}%
+            Loading {Math.round(progress)}%
           </motion.p>
-          <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
+          <div className="h-1 w-full overflow-hidden rounded-full bg-muted">
             <motion.div
-              className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
+              className="h-full bg-primary"
               initial={{ width: "0%" }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}

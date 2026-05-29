@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import AnimatedSection from "@/components/ui/animated-section";
 import { Copy, Check, Mail } from "lucide-react";
 import { useState } from "react";

@@ -89,5 +89,48 @@ export const projects: Project[] = [
         team: "Solo Project",
         type: "personal",
         status: "active"
+    },
+    {
+        id: 5,
+        title: "HR Leave Management System",
+        description: "Windows desktop app for support teams to bulk insert leave taken and brought-forward leave into Microsoft SQL Server",
+        longDescription: "Designed and developed a Windows leave management application for Smart Touch Technology to support bulk leave operations, report configuration, database setup, and operational support workflows. The system connects directly to Microsoft SQL Server, uses stored procedures for leave and balance updates, and includes installer/update scripts for deployment to user machines.",
+        image: "/projects/hr-leave-management-system.png",
+        tech: ["Flutter", "Dart", "Microsoft SQL Server", "Stored Procedures", "ODBC", "Windows Batch Script", "PowerShell"],
+        features: [
+            "Bulk import for leave taken and brought-forward leave",
+            "Direct Microsoft SQL Server integration through ODBC",
+            "Stored procedure driven leave summary recalculation",
+            "Daily leave report configuration inside the desktop system",
+            "Windows release packaging with terminal installer and desktop shortcut",
+            "Support-focused workflow for setup, deployment, and database maintenance"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/leave_management",
+        period: "May 2026 - Present",
+        team: "Smart Touch Technology Sdn Bhd",
+        type: "professional",
+        status: "active"
+    },
+    {
+        id: 6,
+        title: "HR Daily Leave Report Automation",
+        description: "Python automation that generates daily leave reports from SQL Server and emails PDF reports to HR recipients",
+        longDescription: "Built a backend report automation workflow connected to the leave management database. The Python script runs daily through Windows Task Scheduler, executes stored procedures, generates daily attendance and leave reports, converts output to PDF, and sends reports to configured recipients or custom receivers.",
+        image: "",
+        tech: ["Python", "Microsoft SQL Server", "Stored Procedures", "Pandas", "Excel", "PDF", "SMTP", "Windows Task Scheduler"],
+        features: [
+            "Scheduled daily report generation using Windows Task Scheduler",
+            "Stored procedure based attendance and leave report extraction",
+            "Excel report generation and PDF conversion",
+            "SMTP email delivery with configurable recipients",
+            "Custom receiver script for one-off report delivery",
+            "Multi-database target support from report configuration"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/hr_leave_report",
+        downloadUrl: "/file/hr_leave_report.zip",
+        period: "May 2026 - Present",
+        team: "Smart Touch Technology Sdn Bhd",
+        type: "professional",
+        status: "active"
     }
 ];

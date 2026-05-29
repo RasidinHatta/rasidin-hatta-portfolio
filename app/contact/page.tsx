@@ -1,7 +1,7 @@
 // app/contact/page.tsx
 'use client'
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import ContactForm from "@/components/contact/ContactForm"
 import ContactInformation from "@/components/contact/ContactInformation"
 import SocialLinks from "@/components/contact/SocialLinks"
