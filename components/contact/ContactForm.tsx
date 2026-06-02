@@ -13,7 +13,6 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
 import Link from "next/link"
-import { sendContactEmail } from "@/lib/mail"
 
 type ContactFormData = z.infer<typeof contactSchema>
 
@@ -28,18 +27,21 @@ const ContactForm = () => {
     })
 
     const onSubmit = async (data: ContactFormData) => {
-        const result = await sendContactEmail(data)
+        const subject = data.subject || "Portfolio contact"
+        const body = [
+            `Name: ${data.name}`,
+            `Email: ${data.email}`,
+            "",
+            data.message,
+        ].join("\n")
 
-        if (result.success) {
-            toast.success("Message Sent!", {
-                description: "Thank you for reaching out. I'll get back to you soon.",
-            })
-            reset()
-        } else {
-            toast.error("Error Sending Message", {
-                description: result.message
-            })
-        }
+        const mailtoUrl = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        window.open(mailtoUrl, "_self")
+
+        toast.success("Email Draft Opened", {
+            description: "Your message has been prepared in your email app.",
+        })
+        reset()
     }
     return (
         <motion.div
@@ -51,7 +53,7 @@ const ContactForm = () => {
                 <CardHeader>
                     <CardTitle>Send Me a Message</CardTitle>
                     <CardDescription>
-                        Fill out the form below and I'll respond within 24 hours.
+                        Fill out the form below and I&apos;ll respond within 24 hours.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
